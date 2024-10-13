@@ -1,1 +1,28 @@
-<p>agregar-editar-inventario works!</p>
+<div class="row mt-2">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
+            <div class="card-header">Agregar Inventarios</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addInventario()">
+                    <input formControlName="InventarioID" type="text" class="form-control mt-2" placeholder="ingrese ID">
+                    <input formControlName="FechaIngreso" type="text" class="form-control mt-2" placeholder="ingrese fecha de ingreso">
+                    <input formControlName="FechaVenta" type="text" class="form-control mt-2" placeholder="ingrese fecha de salida">
+                    <input formControlName="CantidadIngreso" type="text" class="form-control mt-2" placeholder="ingrese cantidad de ingreso">
+                    <input formControlName="CantidadVenta" type="text" class="form-control mt-2" placeholder="ingrese cantidad de salida">
+                    <input formControlName="existencias" type="text" class="form-control mt-2" placeholder="ingrese existencias">
+                    <input formControlName="HuevoProduccion" type="text" class="form-control mt-2" placeholder="ingrese lote">
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-4">
+                            <button type="submit" class="btn btn-success">aceptar</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button routerLink="/" type="button" class="btn btn-secondary">regresar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
