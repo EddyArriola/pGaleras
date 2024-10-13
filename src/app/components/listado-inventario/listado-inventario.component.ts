@@ -1,7 +1,8 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { InventarioService } from '../../services/inventario.service';
-import { RouterModule, Router} from '@angular/router';
+import { RouterModule, Router, provideRouter} from '@angular/router';
+import { routes } from '../../app.routes';
 
 @Component({
   selector: 'app-listado-inventario',
@@ -28,6 +29,13 @@ export class ListadoInventarioComponent {
       this.listadoInventario = data;
       console.log("imprimir listado usuarios: ",  this.listadoInventario);
     })
+  }
+
+  deleteInventario(id: number){
+    this.inventarioServicio.deleteInventario(id).subscribe(data => {
+      this.cargarListadoGaleras();
+    })
+
   }
   navigateToDestination() {
     this.routes.navigate(['/agregarInventario']);

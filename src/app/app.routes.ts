@@ -5,7 +5,7 @@ import { AgregarEditarInventarioComponent } from './components/agregar-editar-in
 export const routes: Routes = [
 
     { path: '', component: ListadoInventarioComponent },
-    { path: 'agregarInventario', component: AgregarEditarInventarioComponent },
-    { path: 'editar/:id', component: AgregarEditarInventarioComponent },
+    { path: 'agregarInventario', component: AgregarEditarInventarioComponent, pathMatch:'full' },
+    { path: 'editar/:id', component: AgregarEditarInventarioComponent, pathMatch: 'full'},
     { path: '**', redirectTo:'', pathMatch: 'full' }
 ];

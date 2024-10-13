@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Inventario } from '../interfaces/inventario';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,20 @@ export class InventarioService {
     console.log(respuesta);
     return respuesta;
   }
-  getInventario(id: number): Observable<any> {
-    return this.http.get(`${this.urlApi}/${id}`);
+
+  public deleteInventario(id: number): Observable<void> {
+    return this._http.delete<void>(`${this.urlApi}/${id}`);
+  }
+
+  public guardarProducto(inventario: Inventario): Observable<void>{
+    return this._http.post<void>(this.urlApi, inventario)
+  }
+
+  public GetInventarioID(id: number): Observable<Inventario> {
+    return this._http.get<Inventario>(`${this.urlApi}/${id}`);
+  }
+
+  public updateInventario(id:number, inventario: Inventario): Observable<void>{
+    return this._http.put<void>(`${this.urlApi}/${id}`, inventario)
   }
 }

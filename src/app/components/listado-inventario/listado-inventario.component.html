@@ -1,7 +1,7 @@
 <div class="container">
     <div class="titulo">
         <h3>listado de inventarios</h3>
-        <button type="button" class="btn btn-success" (click)="navigateToDestination()">Agregar</button>
+        <button type="button" class="btn btn-success" [routerLink]="['/agregarInventario']">Agregar</button>
     </div>
     
     <table class="table table-hover">
@@ -28,7 +28,7 @@
             <td>{{inventarios.HuevoProduccion}}</td>
             <td>
                 <button [routerLink]="['/editar', inventarios.InventarioID]" type="button" class="btn btn-info btn-sm">Editar</button>
-                <button type="button" class="btn btn-light btn-sm ms-2">Eliminar</button>
+                <button (click)="deleteInventario(inventarios.InventarioID)" type="button" class="btn btn-light btn-sm ms-2">Eliminar</button>
             </td>
             </tr>
         </tbody>
