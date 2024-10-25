@@ -1,0 +1,33 @@
+<app-barra-progreso *ngIf="loading"></app-barra-progreso>
+<div *ngIf="!loading" class="container">
+    <div class="titulo">
+        <h3>listado de tipos de huevos</h3>
+        <button type="button" class="btn btn-success" [routerLink]="['/agregarTipoHuevo']">Agregar</button>
+    </div>
+    
+    <table class="table table-hover">
+        <thead> 
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let TipoHuevo of listadoTipo">
+            <td scope="row">{{TipoHuevo.HuevoID}}</td>
+            <td>{{TipoHuevo.Nombre}}</td>
+            <td>{{TipoHuevo.Precio}}</td>
+            <td>{{TipoHuevo.Descripcion}}</td>
+            <td>
+                <button [routerLink]="['/editarTipoHuevo', TipoHuevo.HuevoID]" type="button" class="btn btn-info btn-sm">Editar</button>
+                <button (click)="delete(TipoHuevo.HuevoID)" type="button" class="btn btn-light btn-sm ms-2">Eliminar</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

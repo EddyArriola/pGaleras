@@ -1,0 +1,32 @@
+<app-barra-progreso *ngIf="loading"></app-barra-progreso>
+<div *ngIf="!loading" class="container">
+    <div class="titulo d-flex justify-content-end">
+        <h3 class="me-auto">listado de detalles de venta</h3>
+        <button type="button" class="btn btn-success" [routerLink]="['/agregarDetalle']">Agregar</button>
+        <button type="button" class="btn btn-success" [routerLink]="['/listadoVenta']">Regresar</button>
+    </div>
+    
+    <table class="table table-hover">
+        <thead> 
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">ID tipo de huevo</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let detalle of listadoDetalle">
+            <td scope="row">{{detalle.DetalleID}}</td>
+            <td>{{detalle.HuevoID}}</td>
+            <td>{{detalle.cantidad}}</td>
+            <td>
+                <button [routerLink]="['/editarDetalle', detalle.DetalleID]" type="button" class="btn btn-info btn-sm">Editar</button>
+                <button (click)="delete(detalle.DetalleID)" type="button" class="btn btn-light btn-sm ms-2">Eliminar</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

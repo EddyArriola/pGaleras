@@ -1,0 +1,36 @@
+<app-barra-progreso *ngIf="loading"></app-barra-progreso>
+<div *ngIf="!loading" class="container">
+    <div class="titulo d-flex justify-content-end">
+        <h3 class="me-auto">listado de Ventas</h3>
+        <button type="button" class="btn btn-success" [routerLink]="['/listadoDetalle']">Agregar detalle</button>
+        <button type="button" class="btn btn-success ms-2" [routerLink]="['/agregarVenta']">Agregar</button>
+    </div>
+    
+    <table class="table table-hover">
+        <thead> 
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Fecha de venta</th>
+            <th scope="col">Total</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Detalle de venta</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let venta of listadoVenta">
+            <td scope="row">{{venta.VentaID}}</td>
+            <td>{{venta.FechaVenta}}</td>
+            <td>{{venta.TotalVenta}}</td>
+            <td>{{venta.ClienteID}}</td>
+            <td>{{venta.DetalleID}}</td>
+            <td>
+                <button [routerLink]="['/editarVenta', venta.VentaID]" type="button" class="btn btn-info btn-sm">Editar</button>
+                <button (click)="delete(venta.VentaID)" type="button" class="btn btn-light btn-sm ms-2">Eliminar</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

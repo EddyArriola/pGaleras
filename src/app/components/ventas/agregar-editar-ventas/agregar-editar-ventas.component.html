@@ -1,0 +1,29 @@
+<div class="row mt-2">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
+            <div class="card-header">{{ operacion }} venta</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addTodo()">
+                    <input formControlName="ClienteID" type="number" class="form-control mt-2" placeholder="ingrese el ID del cliente">
+                        <span *ngIf="form.get('ClienteID')?.hasError('required') && form.get('ClienteID')?.touched">
+                            el campo es <strong>requerido</strong>
+                        </span>
+                    <input formControlName="DetalleID" type="number" class="form-control mt-2" placeholder="ingrese el ID del detalle de venta">
+                        <span *ngIf="form.get('DetalleID')?.hasError('required') && form.get('DetalleID')?.touched">
+                            el campo es <strong>requerido</strong>
+                        </span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-4">
+                            <button [disabled]="form.invalid" type="submit" class="btn btn-success">aceptar</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button routerLink="/listadoVenta" type="button" class="btn btn-secondary">regresar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+

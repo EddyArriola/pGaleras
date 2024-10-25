@@ -1,0 +1,33 @@
+<div class="row mt-2">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
+            <div class="card-header">{{ operacion }} Inventarios</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addInventario()">
+                    <input formControlName="Nombre" type="text" class="form-control mt-2" placeholder="ingrese el nombre">
+                        <span *ngIf="form.get('Nombre')?.hasError('required') && form.get('Nombre')?.touched">
+                            el campo es <strong>requerido</strong>
+                        </span>
+                    <input formControlName="HuevoID" type="number" class="form-control mt-2" placeholder="ingrese el ID del tipo de huevo">
+                        <span *ngIf="form.get('HuevoID')?.hasError('required') && form.get('HuevoID')?.touched">
+                            el campo es <strong>requerido</strong>
+                        </span>
+                    <input formControlName="Existencias" type="number" class="form-control mt-2" placeholder="ingrese existencias">
+                        <span *ngIf="form.get('Existencias')?.hasError('required') && form.get('Existencias')?.touched">
+                            el campo es <strong>requerido</strong>
+                        </span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-4">
+                            <button [disabled]="form.invalid" type="submit" class="btn btn-success">aceptar</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button routerLink="/listadoInventario" type="button" class="btn btn-secondary">regresar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+

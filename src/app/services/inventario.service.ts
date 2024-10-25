@@ -6,7 +6,7 @@ import { Inventario } from '../interfaces/inventario';
 @Injectable({
   providedIn: 'root'
 })
-export class InventarioService {
+export class InventarioService { 
 
   private readonly _http = inject(HttpClient);
   private urlApi = 'http://localhost:3000/api/v1/inventario'
@@ -17,7 +17,6 @@ export class InventarioService {
       
   public getObtenerTodoInventario(): Observable<any>{
     var respuesta = this.http.get<any>(this.urlApi);
-    console.log(respuesta);
     return respuesta;
   }
 

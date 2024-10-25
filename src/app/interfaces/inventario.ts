@@ -1,7 +1,5 @@
 export interface Inventario{
-    FechaIngreso: string;
-    FechaVenta: string;
-    CantidadIngreso: string;
-    CantidadVenta:string;
+    Nombre: string;
+    HuevoID: number;
     Existencias:string;
 }

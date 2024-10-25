@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ListadoInventarioComponent } from './components/listado-inventario/listado-inventario.component';
+import { ListadoInventarioComponent } from './components/inventario/listado-inventario/listado-inventario.component';
 
 @Component({
   selector: 'app-root',
