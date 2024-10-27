@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InventarioService } from '../../../services/inventario.service';
 import { RouterModule, Router} from '@angular/router';
 import { BarraProgresoComponent } from '../../../shared/barra-progreso/barra-progreso.component';
@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './listado-inventario.component.html',
   styleUrl: './listado-inventario.component.css'
 })
-export class ListadoInventarioComponent {
+export class ListadoInventarioComponent implements OnInit {
 
   constructor(private inventarioServicio: InventarioService, private routes: Router, private toastr: ToastrService ){};
   public listadoInventario : any [] = [];

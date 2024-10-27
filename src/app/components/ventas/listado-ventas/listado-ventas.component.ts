@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { VentasService } from '../../../services/ventas.service';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -12,7 +12,7 @@ import { BarraProgresoComponent } from '../../../shared/barra-progreso/barra-pro
   templateUrl: './listado-ventas.component.html',
   styleUrl: './listado-ventas.component.css'
 })
-export class ListadoVentasComponent {
+export class ListadoVentasComponent implements OnInit {
 
   
 

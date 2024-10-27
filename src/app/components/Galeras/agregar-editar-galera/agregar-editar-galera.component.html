@@ -1,23 +1,19 @@
 <div class="row mt-2">
     <div class="col-lg-4 offset-lg-4">
         <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
-            <div class="card-header">{{ operacion }} gallina</div>
+            <div class="card-header">{{ operacion }} galera</div>
             <div class="card-body">
                 <form [formGroup]="form" (ngSubmit)="addTodo()">
                     <input formControlName="Nombre" type="text" class="form-control mt-2" placeholder="ingrese el nombre">
                         <span *ngIf="form.get('Nombre')?.hasError('required') && form.get('Nombre')?.touched">
                             el campo es <strong>requerido</strong>
                         </span>
-                    <input formControlName="GaleraID" type="number" class="form-control mt-2" placeholder="ingrese a que galera ira">
-                        <span *ngIf="form.get('GaleraID')?.hasError('required') && form.get('GaleraID')?.touched">
+                    <input formControlName="Capacidad" type="number" class="form-control mt-2" placeholder="ingrese la capacidad de la galera">
+                        <span *ngIf="form.get('Capacidad')?.hasError('required') && form.get('Capacidad')?.touched">
                             el campo es <strong>requerido</strong>
                         </span>
-                    <input formControlName="FechaNacimiento" type="date" class="form-control mt-2" placeholder="ingrese una fecha de nacimiento">
-                        <span *ngIf="form.get('FechaNacimiento')?.hasError('required') && form.get('FechaNacimiento')?.touched">
-                            el campo es <strong>requerido</strong>
-                        </span>
-                    <input formControlName="FechaLlegada" type="date" class="form-control mt-2" placeholder="ingrese una fecha de llegada">
-                        <span *ngIf="form.get('FechaLlegada')?.hasError('required') && form.get('FechaLlegada')?.touched">
+                    <input formControlName="Cantidad" type="number" class="form-control mt-2" placeholder="ingrese la cantidad actual">
+                        <span *ngIf="form.get('Cantidad')?.hasError('required') && form.get('Cantidad')?.touched">
                             el campo es <strong>requerido</strong>
                         </span>
                     <div class="row mt-2 text-center">
@@ -25,7 +21,7 @@
                             <button [disabled]="form.invalid" type="submit" class="btn btn-success">aceptar</button>
                         </div>
                         <div class="col-lg-4">
-                            <button routerLink="/listadoGallina" type="button" class="btn btn-secondary">regresar</button>
+                            <button routerLink="/listadoGalera" type="button" class="btn btn-secondary">regresar</button>
                         </div>
                     </div>
                 </form>

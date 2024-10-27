@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { BarraProgresoComponent } from '../../../shared/barra-progreso/barra-progreso.component';
 import { GallinasService } from '../../../services/gallinas-service.service';
@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './listado-gallinas.component.html',
   styleUrl: './listado-gallinas.component.css'
 })
-export class ListadoGallinasComponent {
+export class ListadoGallinasComponent implements OnInit {
 
   
 

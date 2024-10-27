@@ -2,21 +2,23 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { BarraProgresoComponent } from '../../../shared/barra-progreso/barra-progreso.component';
-import {TipoHuevoService} from '../../../services/tipo-huevo.service';
+import { GaleraService } from '../../../services/galera.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-listado-tipo',
+  selector: 'app-listado-galera',
   standalone: true,
   imports: [NgFor, NgIf, RouterModule, BarraProgresoComponent],
-  templateUrl: './listado-tipo.component.html',
-  styleUrl: './listado-tipo.component.css'
+  templateUrl: './listado-galera.component.html',
+  styleUrl: './listado-galera.component.css'
 })
-export class ListadoTipoComponent implements OnInit {
+export class ListadoGaleraComponent implements OnInit{
+
+
   
 
-  constructor(private TipoHuevoService: TipoHuevoService, private routes: Router, private toastr: ToastrService ){};
-  public listadoTipo : any [] = [];
+  constructor(private GaleraService: GaleraService, private routes: Router, private toastr: ToastrService ){};
+  public listado : any [] = [];
   loading: boolean = false;
 
   
@@ -27,23 +29,25 @@ export class ListadoTipoComponent implements OnInit {
 
   cargarListado(){
     this.loading=true;
-    this.TipoHuevoService.getObtenerTodo().subscribe(data => {
-      this.listadoTipo = data;
+    this.GaleraService.getObtenerTodo().subscribe(data => {
+      this.listado = data;
       this.loading=false;
     })
   }
 
   delete(id: number){
     this.loading=true;
-    this.TipoHuevoService.delete(id).subscribe(data => {
+    this.GaleraService.delete(id).subscribe(data => {
       this.cargarListado();
-      this.toastr.warning('el tipo de huevo fue eliminado', 'Tipo eliminado');
+      this.toastr.warning('la galera fue eliminada', 'galera eliminado');
     })
 
   }
   navigateToDestination() {
-    this.routes.navigate(['/agregarTipoHuevo']);
+    this.routes.navigate(['/agregarGalera']);
   }
+
+
 
 
 }

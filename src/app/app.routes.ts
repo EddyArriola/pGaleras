@@ -10,6 +10,11 @@ import { ListadoVentasComponent } from './components/ventas/listado-ventas/lista
 import { AgregarEditarVentasComponent } from './components/ventas/agregar-editar-ventas/agregar-editar-ventas.component';
 import { ListadoGallinasComponent } from './components/gallinas/listado-gallinas/listado-gallinas.component';
 import { AgregarEditarGallinasComponent } from './components/gallinas/agregar-editar-gallinas/agregar-editar-gallinas.component';
+import { ListadoClienteComponent } from './components/clientes/listado-cliente/listado-cliente.component';
+import { AgregarEditarClienteComponent } from './components/clientes/agregar-editar-cliente/agregar-editar-cliente.component';
+import { ListadoGaleraComponent } from './components/Galeras/listado-galera/listado-galera.component';
+import { AgregarEditarGaleraComponent } from './components/Galeras/agregar-editar-galera/agregar-editar-galera.component';
+
 
 export const routes: Routes = [
 
@@ -34,6 +39,14 @@ export const routes: Routes = [
     { path: 'listadoGallina', component: ListadoGallinasComponent },
     { path: 'agregarGallina', component: AgregarEditarGallinasComponent },
     { path: 'editarGallina/:id', component: AgregarEditarGallinasComponent },
+    //modulo de cliente
+    { path: 'listadoCliente', component: ListadoClienteComponent },
+    { path: 'agregarCliente', component: AgregarEditarClienteComponent },
+    { path: 'editarCliente/:id', component: AgregarEditarClienteComponent },
+    //modulo de galeras
+    { path: 'listadoGalera', component: ListadoGaleraComponent },
+    { path: 'agregarGalera', component: AgregarEditarGaleraComponent },
+    { path: 'editarGalera/:id', component: AgregarEditarGaleraComponent },
     { path: '**', redirectTo:'', pathMatch: 'full' }
 ];
 

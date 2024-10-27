@@ -1,23 +1,27 @@
 <div class="row mt-2">
     <div class="col-lg-4 offset-lg-4">
         <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
-            <div class="card-header">{{ operacion }} gallina</div>
+            <div class="card-header">{{ operacion }} cliente</div>
             <div class="card-body">
                 <form [formGroup]="form" (ngSubmit)="addTodo()">
                     <input formControlName="Nombre" type="text" class="form-control mt-2" placeholder="ingrese el nombre">
                         <span *ngIf="form.get('Nombre')?.hasError('required') && form.get('Nombre')?.touched">
                             el campo es <strong>requerido</strong>
                         </span>
-                    <input formControlName="GaleraID" type="number" class="form-control mt-2" placeholder="ingrese a que galera ira">
-                        <span *ngIf="form.get('GaleraID')?.hasError('required') && form.get('GaleraID')?.touched">
+                    <input formControlName="Apellidos" type="text" class="form-control mt-2" placeholder="ingrese el Apellidos del cliente">
+                        <span *ngIf="form.get('Apellidos')?.hasError('required') && form.get('Apellidos')?.touched">
                             el campo es <strong>requerido</strong>
                         </span>
-                    <input formControlName="FechaNacimiento" type="date" class="form-control mt-2" placeholder="ingrese una fecha de nacimiento">
-                        <span *ngIf="form.get('FechaNacimiento')?.hasError('required') && form.get('FechaNacimiento')?.touched">
+                    <input formControlName="Direccion" type="text" class="form-control mt-2" placeholder="ingrese una Direccion">
+                        <span *ngIf="form.get('Direccion')?.hasError('required') && form.get('Direccion')?.touched">
                             el campo es <strong>requerido</strong>
                         </span>
-                    <input formControlName="FechaLlegada" type="date" class="form-control mt-2" placeholder="ingrese una fecha de llegada">
-                        <span *ngIf="form.get('FechaLlegada')?.hasError('required') && form.get('FechaLlegada')?.touched">
+                    <input formControlName="Email" type="text" class="form-control mt-2" placeholder="ingrese un Email">
+                        <span *ngIf="form.get('Email')?.hasError('required') && form.get('Email')?.touched">
+                            el campo es <strong>requerido</strong>
+                        </span>
+                    <input formControlName="Telefono" type="number" class="form-control mt-2" placeholder="ingrese un Telefono">
+                        <span *ngIf="form.get('Telefono')?.hasError('required') && form.get('Telefono')?.touched">
                             el campo es <strong>requerido</strong>
                         </span>
                     <div class="row mt-2 text-center">
@@ -25,7 +29,7 @@
                             <button [disabled]="form.invalid" type="submit" class="btn btn-success">aceptar</button>
                         </div>
                         <div class="col-lg-4">
-                            <button routerLink="/listadoGallina" type="button" class="btn btn-secondary">regresar</button>
+                            <button routerLink="/listadoCliente" type="button" class="btn btn-secondary">regresar</button>
                         </div>
                     </div>
                 </form>
@@ -34,4 +38,5 @@
     </div>
 
 </div>
+
 

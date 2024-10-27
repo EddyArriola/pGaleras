@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { VentasService } from '../../../services/ventas.service';
@@ -13,7 +13,7 @@ import { venta } from '../../../interfaces/venta';
   templateUrl: './agregar-editar-ventas.component.html',
   styleUrl: './agregar-editar-ventas.component.css'
 })
-export class AgregarEditarVentasComponent {
+export class AgregarEditarVentasComponent implements OnInit{
 
 
   

@@ -1,0 +1,35 @@
+<app-barra-progreso *ngIf="loading"></app-barra-progreso>
+<div *ngIf="!loading" class="container">
+    <div class="titulo">
+        <h3>listado de galeras</h3> 
+        <button type="button" class="btn btn-success" [routerLink]="['/agregarGalera']">Agregar</button>
+    </div>
+    
+    <table class="table table-hover">
+        <thead> 
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Capacidad</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let galeras of listado">
+            <td scope="row">{{galeras.GaleraID}}</td>
+            <td>{{galeras.Nombre}}</td>
+            <td>{{galeras.Capacidad}}</td>
+            <td>{{galeras.Cantidad}}</td>
+            <td>
+                <button [routerLink]="['/editarGalera', galeras.GaleraID]" type="button" class="btn btn-info btn-sm">Editar</button>
+                <button (click)="delete(galeras.GaleraID)" type="button" class="btn btn-light btn-sm ms-2">Eliminar</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
