@@ -8,6 +8,8 @@ import { ListadoDetalleComponent } from './components/DetalleVenta/listado-detal
 import { AgregarEditarDetalleComponent } from './components/DetalleVenta/agregar-editar-detalle/agregar-editar-detalle.component';
 import { ListadoVentasComponent } from './components/ventas/listado-ventas/listado-ventas.component';
 import { AgregarEditarVentasComponent } from './components/ventas/agregar-editar-ventas/agregar-editar-ventas.component';
+import { ListadoClienteComponent } from './components/clientes/listado-cliente/listado-cliente.component';
+import { AgregarEditarClienteComponent } from './components/clientes/agregar-editar-cliente/agregar-editar-cliente.component';
 
 export const routes: Routes = [
 
@@ -28,5 +30,9 @@ export const routes: Routes = [
     { path: 'listadoVenta', component: ListadoVentasComponent },
     { path: 'agregarVenta', component: AgregarEditarVentasComponent },
     { path: 'editarVenta/:id', component: AgregarEditarVentasComponent },
+    //modulo de cliente
+    { path: 'listadoCliente', component: ListadoClienteComponent },
+    { path: 'agregarCliente', component: AgregarEditarClienteComponent },
+    { path: 'editarVenta/:id', component: AgregarEditarClienteComponent },
     { path: '**', redirectTo:'', pathMatch: 'full' }
 ];
