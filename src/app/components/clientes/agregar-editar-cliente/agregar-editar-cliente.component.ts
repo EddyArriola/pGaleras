@@ -52,8 +52,10 @@ export class AgregarEditarClienteComponent {
         console.log(data);
         this.form.setValue({
           Nombre: data.Nombre,
-          Precio: data.Precio,
-          Descripcion: data.Descripcion
+          Apellidos: data.Apellidos,
+          Direccion: data.Direccion,
+          Email: data.Email,
+          Telefono: data.Telefono
         })
       })
     }
