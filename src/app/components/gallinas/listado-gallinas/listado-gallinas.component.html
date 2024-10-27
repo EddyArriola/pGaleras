@@ -1,0 +1,36 @@
+<app-barra-progreso *ngIf="loading"></app-barra-progreso>
+<div *ngIf="!loading" class="container">
+    <div class="titulo">
+        <h3>listado de tipos de huevos</h3>
+        <button type="button" class="btn btn-success" [routerLink]="['/agregarGallina']">Agregar</button>
+    </div>
+    
+    <table class="table table-hover">
+        <thead> 
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Galera</th>
+            <th scope="col">Fecha de nacimiento</th>
+            <th scope="col">Fecha de llegada</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let gallina of listado">
+            <td scope="row">{{gallina.GallinaID}}</td>
+            <td>{{gallina.Nombre}}</td>
+            <td>{{gallina.GaleraID}}</td>
+            <td>{{gallina.FechaNacimiento}}</td>
+            <td>{{gallina.FechaLlegada}}</td>
+            <td>
+                <button [routerLink]="['/editarGallina', gallina.GallinaID]" type="button" class="btn btn-info btn-sm">Editar</button>
+                <button (click)="delete(gallina.GallinaID)" type="button" class="btn btn-light btn-sm ms-2">Eliminar</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

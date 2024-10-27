@@ -8,6 +8,8 @@ import { ListadoDetalleComponent } from './components/DetalleVenta/listado-detal
 import { AgregarEditarDetalleComponent } from './components/DetalleVenta/agregar-editar-detalle/agregar-editar-detalle.component';
 import { ListadoVentasComponent } from './components/ventas/listado-ventas/listado-ventas.component';
 import { AgregarEditarVentasComponent } from './components/ventas/agregar-editar-ventas/agregar-editar-ventas.component';
+import { ListadoGallinasComponent } from './components/gallinas/listado-gallinas/listado-gallinas.component';
+import { AgregarEditarGallinasComponent } from './components/gallinas/agregar-editar-gallinas/agregar-editar-gallinas.component';
 
 export const routes: Routes = [
 
@@ -28,5 +30,10 @@ export const routes: Routes = [
     { path: 'listadoVenta', component: ListadoVentasComponent },
     { path: 'agregarVenta', component: AgregarEditarVentasComponent },
     { path: 'editarVenta/:id', component: AgregarEditarVentasComponent },
+    //modulo de gallinas
+    { path: 'listadoGallina', component: ListadoGallinasComponent },
+    { path: 'agregarGallina', component: AgregarEditarGallinasComponent },
+    { path: 'editarGallina/:id', component: AgregarEditarGallinasComponent },
     { path: '**', redirectTo:'', pathMatch: 'full' }
 ];
+
