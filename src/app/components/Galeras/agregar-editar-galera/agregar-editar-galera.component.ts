@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { GaleraService } from '../../../services/galera.service';
 import { ToastrService } from 'ngx-toastr';
 import { galera } from '../../../interfaces/galera';
+import { ComunicacionService } from '../../../services/comunicacion.service';
 
 @Component({
   selector: 'app-agregar-editar-galera',
@@ -26,6 +27,7 @@ export class AgregarEditarGaleraComponent implements OnInit {
     private route: Router,
     private _galeraService:GaleraService, 
     private aRouter: ActivatedRoute, 
+    private comunicacion: ComunicacionService,
     private toastr: ToastrService){
 
 
@@ -67,17 +69,18 @@ export class AgregarEditarGaleraComponent implements OnInit {
 
     if(this.id !==0){
       //es editar
-      this._galeraService.update(this.id, galera).subscribe(() =>
-      this.toastr.success('los datos de la galera fueron corregidos', 'galera editado')
-      
-    
+      this._galeraService.update(this.id, galera).subscribe(() =>{
+      this.toastr.success('los datos de la galera fueron corregidos', 'galera editado');
+      this.comunicacion.triggerRefresh();
+      }
     
       )
     }else{
       //agregar
       this._galeraService.guardar(galera).subscribe(() =>{
         console.log(galera);
-        this.toastr.success('la galera fue agregado con exito', 'galera agregado')
+        this.toastr.success('la galera fue agregado con exito', 'galera agregado');
+        this.comunicacion.triggerRefresh();
       })
     }
     this.route.navigate(['listadoGalera']);

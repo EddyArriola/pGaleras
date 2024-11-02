@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { VentasService } from '../../../services/ventas.service';
 import { ToastrService } from 'ngx-toastr';
 import { venta } from '../../../interfaces/venta';
+import {ComunicacionService} from '../../../services/comunicacion.service'
 
 @Component({
   selector: 'app-agregar-editar-ventas',
@@ -26,6 +27,7 @@ export class AgregarEditarVentasComponent implements OnInit{
     private route: Router,
     private _VentasService: VentasService, 
     private aRouter: ActivatedRoute, 
+    private comunicacion: ComunicacionService,
     private toastr: ToastrService){
 
 
@@ -66,8 +68,11 @@ export class AgregarEditarVentasComponent implements OnInit{
 
     if(this.id !==0){
       //es editar
-      this._VentasService.update(this.id, Venta).subscribe(() =>
-      this.toastr.success('la venta fue corregida', 'venta editada')
+      this._VentasService.update(this.id, Venta).subscribe(() =>{
+      this.toastr.success('la venta fue corregida', 'venta editada');
+      this.comunicacion.triggerRefresh();
+      }
+      
       
     
     
@@ -75,8 +80,8 @@ export class AgregarEditarVentasComponent implements OnInit{
     }else{
       //agregar
       this._VentasService.guardar(Venta).subscribe(() =>{
-        console.log(Venta);
-        this.toastr.success('la Venta fue agregado con exito', 'Venta agregado')
+        this.toastr.success('la Venta fue agregado con exito', 'Venta agregado');
+        this.comunicacion.triggerRefresh();
       })
     }
     this.route.navigate(['listadoVenta']);

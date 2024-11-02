@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ClienteService } from '../../../services/cliente.service';
 import { ToastrService } from 'ngx-toastr';
 import { Cliente } from '../../../interfaces/cliente';
+import { ComunicacionService } from '../../../services/comunicacion.service';
 
 @Component({
   selector: 'app-agregar-editar-cliente',
@@ -25,6 +26,7 @@ export class AgregarEditarClienteComponent implements OnInit{
     private route: Router,
     private _clienteService:ClienteService, 
     private aRouter: ActivatedRoute, 
+    private comunicacion: ComunicacionService,
     private toastr: ToastrService){
 
 
@@ -72,8 +74,11 @@ export class AgregarEditarClienteComponent implements OnInit{
 
     if(this.id !==0){
       //es editar
-      this._clienteService.update(this.id, Cliente).subscribe(() =>
-      this.toastr.success('el cliente fue corregido', 'cliente editado')
+      this._clienteService.update(this.id, Cliente).subscribe(() =>{
+        this.toastr.success('el cliente fue corregido', 'cliente editado')
+        this.comunicacion.triggerRefresh();
+      }
+      
       
     
     
@@ -81,7 +86,8 @@ export class AgregarEditarClienteComponent implements OnInit{
     }else{
       //agregar
       this._clienteService.guardar(Cliente).subscribe(() =>{
-        this.toastr.success('el cliente fue agregado con exito', 'cliente agregado')
+        this.toastr.success('el cliente fue agregado con exito', 'cliente agregado');
+        this.comunicacion.triggerRefresh();
       })
     }
     this.route.navigate(['listadoCliente']);

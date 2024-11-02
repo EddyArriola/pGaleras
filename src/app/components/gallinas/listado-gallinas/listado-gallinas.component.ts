@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { BarraProgresoComponent } from '../../../shared/barra-progreso/barra-progreso.component';
 import { GallinasService } from '../../../services/gallinas-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { ComunicacionService } from '../../../services/comunicacion.service';
 
 @Component({
   selector: 'app-listado-gallinas',
@@ -16,13 +17,20 @@ export class ListadoGallinasComponent implements OnInit {
 
   
 
-  constructor(private gallinasService: GallinasService, private routes: Router, private toastr: ToastrService ){};
+  constructor(private gallinasService: GallinasService, 
+    private routes: Router, 
+    private toastr: ToastrService,
+    private comunicacion: ComunicacionService
+  ){};
   public listado : any [] = [];
   loading: boolean = false;
 
   
   ngOnInit(): void{
     this.cargarListado();
+    this.comunicacion.refreshListado$.subscribe(()=>{
+      this.cargarListado();
+    });
 
   }
 

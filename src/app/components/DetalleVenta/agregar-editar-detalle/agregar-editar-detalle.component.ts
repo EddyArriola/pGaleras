@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DetalleVentaService } from '../../../services/detalle-venta.service';
 import { ToastrService } from 'ngx-toastr';
 import { detalle } from '../../../interfaces/detalle';
+import { ComunicacionService } from '../../../services/comunicacion.service';
 
 @Component({
   selector: 'app-agregar-editar-detalle',
@@ -25,6 +26,7 @@ export class AgregarEditarDetalleComponent implements OnInit {
     private route: Router,
     private _detalleService: DetalleVentaService, 
     private aRouter: ActivatedRoute, 
+    private comunicacion: ComunicacionService,
     private toastr: ToastrService){
 
 
@@ -64,9 +66,10 @@ export class AgregarEditarDetalleComponent implements OnInit {
 
     if(this.id !==0){
       //es editar
-      this._detalleService.update(this.id, detalle).subscribe(() =>
-      this.toastr.success('el detalle de venta fue corregido', 'detalle editado')
-      
+      this._detalleService.update(this.id, detalle).subscribe(() =>{
+      this.toastr.success('el detalle de venta fue corregido', 'detalle editado');
+      this.comunicacion.triggerRefresh();
+      }
     
     
       )
@@ -74,7 +77,8 @@ export class AgregarEditarDetalleComponent implements OnInit {
       //agregar
       this._detalleService.guardar(detalle).subscribe(() =>{
         console.log(detalle);
-        this.toastr.success('el detalle de venta fue agregado con exito', 'detalle agregado')
+        this.toastr.success('el detalle de venta fue agregado con exito', 'detalle agregado');
+        this.comunicacion.triggerRefresh();
       })
     }
     this.route.navigate(['listadoDetalle']);

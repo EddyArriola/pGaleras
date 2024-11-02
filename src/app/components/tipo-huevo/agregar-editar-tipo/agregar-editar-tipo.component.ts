@@ -5,6 +5,7 @@ import { TipoHuevoService } from '../../../services/tipo-huevo.service';
 import { ToastrService } from 'ngx-toastr';
 import { TipoHuevo } from '../../../interfaces/tipoHuevo';
 import { NgFor, NgIf } from '@angular/common';
+import { ComunicacionService } from '../../../services/comunicacion.service';
 
 @Component({
   selector: 'app-agregar-editar-tipo',
@@ -24,6 +25,7 @@ export class AgregarEditarTipoComponent implements OnInit {
     private route: Router,
     private _TipoService:TipoHuevoService, 
     private aRouter: ActivatedRoute, 
+    private comunicacion: ComunicacionService,
     private toastr: ToastrService){
 
 
@@ -66,17 +68,18 @@ export class AgregarEditarTipoComponent implements OnInit {
 
     if(this.id !==0){
       //es editar
-      this._TipoService.update(this.id, TipoHuevo).subscribe(() =>
-      this.toastr.success('el tipo fue corregido', 'Tipo de huevo editado')
-      
+      this._TipoService.update(this.id, TipoHuevo).subscribe(() =>{
+      this.toastr.success('el tipo fue corregido', 'Tipo de huevo editado');
+      this.comunicacion.triggerRefresh();
     
-    
+      }
       )
     }else{
       //agregar
       this._TipoService.guardar(TipoHuevo).subscribe(() =>{
         console.log(TipoHuevo);
-        this.toastr.success('el tipo de huevo fue agregado con exito', 'TipoHuevo agregado')
+        this.toastr.success('el tipo de huevo fue agregado con exito', 'TipoHuevo agregado');
+        this.comunicacion.triggerRefresh();
       })
     }
     this.route.navigate(['listadoTipoHuevo']);

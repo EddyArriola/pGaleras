@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { GallinasService } from '../../../services/gallinas-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { gallina } from '../../../interfaces/gallinas';
+import { ComunicacionService } from '../../../services/comunicacion.service';
 
 @Component({
   selector: 'app-agregar-editar-gallinas',
@@ -25,6 +26,7 @@ export class AgregarEditarGallinasComponent implements OnInit{
     private route: Router,
     private _gallinasService:GallinasService, 
     private aRouter: ActivatedRoute, 
+    private comunicacion: ComunicacionService,
     private toastr: ToastrService){
 
 
@@ -69,17 +71,18 @@ export class AgregarEditarGallinasComponent implements OnInit{
 
     if(this.id !==0){
       //es editar
-      this._gallinasService.update(this.id, gallina).subscribe(() =>
+      this._gallinasService.update(this.id, gallina).subscribe(() =>{
       this.toastr.success('los datos de la gallina fueron corregidos', 'gallina editado')
-      
+      this.comunicacion.triggerRefresh();
     
-    
+      }
       )
     }else{
       //agregar
       this._gallinasService.guardar(gallina).subscribe(() =>{
         console.log(gallina);
-        this.toastr.success('la gallina fue agregado con exito', 'gallina agregado')
+        this.toastr.success('la gallina fue agregado con exito', 'gallina agregado');
+        this.comunicacion.triggerRefresh();
       })
     }
     this.route.navigate(['listadoGallina']);

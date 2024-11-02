@@ -4,6 +4,8 @@ import { InventarioService } from '../../../services/inventario.service';
 import { RouterModule, Router} from '@angular/router';
 import { BarraProgresoComponent } from '../../../shared/barra-progreso/barra-progreso.component';
 import { ToastrService } from 'ngx-toastr';
+import { ComunicacionService } from '../../../services/comunicacion.service';
+
 
 @Component({
   selector: 'app-listado-inventario',
@@ -14,17 +16,24 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListadoInventarioComponent implements OnInit {
 
-  constructor(private inventarioServicio: InventarioService, private routes: Router, private toastr: ToastrService ){};
+  constructor(private inventarioServicio: InventarioService, 
+    private routes: Router, 
+    private toastr: ToastrService,
+    private comunicacion: ComunicacionService
+    ){};
   public listadoInventario : any [] = [];
   loading: boolean = false;
 
   
   ngOnInit(): void{
-    this.cargarListadoGaleras();
+    this.cargarListadoInventario();
+    this.comunicacion.refreshListado$.subscribe(()=>{
+      this.cargarListadoInventario();
+    });
 
   }
 
-  cargarListadoGaleras(){
+  cargarListadoInventario(){
     this.loading=true;
     this.inventarioServicio.getObtenerTodoInventario().subscribe(data => {
       this.listadoInventario = data;
@@ -35,9 +44,10 @@ export class ListadoInventarioComponent implements OnInit {
   deleteInventario(id: number){
     this.loading=true;
     this.inventarioServicio.deleteInventario(id).subscribe(data => {
-      this.cargarListadoGaleras();
+      this.cargarListadoInventario();
       this.toastr.warning('el producto fue eliminado', 'producto eliminado');
     })
+    
 
   }
   navigateToDestination() {

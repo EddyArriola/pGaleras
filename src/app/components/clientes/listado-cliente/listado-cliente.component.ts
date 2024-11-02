@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { BarraProgresoComponent } from '../../../shared/barra-progreso/barra-progreso.component';
 import { ClienteService } from '../../../services/cliente.service';
 import { ToastrService } from 'ngx-toastr';
+import { ComunicacionService } from '../../../services/comunicacion.service';
 
 @Component({
   selector: 'app-listado-cliente',
@@ -17,13 +18,20 @@ export class ListadoClienteComponent implements OnInit{
   
   
 
-  constructor(private clienteService: ClienteService, private routes: Router, private toastr: ToastrService ){};
+  constructor(private clienteService: ClienteService, 
+    private routes: Router,
+    private toastr: ToastrService,
+    private comunicacion: ComunicacionService
+    ){};
   public listado : any [] = [];
   loading: boolean = false;
 
   
   ngOnInit(): void{
     this.cargarListado();
+    this.comunicacion.refreshListado$.subscribe(()=>{
+      this.cargarListado();
+    });
 
   }
 

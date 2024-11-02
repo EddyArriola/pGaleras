@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ListadoTipoComponent implements OnInit {
   
 
-  constructor(private TipoHuevoService: TipoHuevoService, private routes: Router, private toastr: ToastrService ){};
+  constructor(private TipoHuevoService: TipoHuevoService, private routes: Router, private toastr: ToastrService ){this.cargarListado};
   public listadoTipo : any [] = [];
   loading: boolean = false;
 

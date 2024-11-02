@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Inventario } from '../../../interfaces/inventario';
 import { InventarioService } from '../../../services/inventario.service';
 import { ToastrService } from 'ngx-toastr';
+import { ComunicacionService } from '../../../services/comunicacion.service';
 
 @Component({
   selector: 'app-agregar-editar-inventario',
@@ -23,6 +24,7 @@ export class AgregarEditarInventarioComponent implements OnInit {
     private route: Router,
     private _inventarioService:InventarioService, 
     private aRouter: ActivatedRoute, 
+    private comunicacion: ComunicacionService,
     private toastr: ToastrService){
 
 
@@ -65,17 +67,18 @@ export class AgregarEditarInventarioComponent implements OnInit {
 
     if(this.id !==0){
       //es editar
-      this._inventarioService.updateInventario(this.id, inventario).subscribe(() =>
-      this.toastr.success('el inventario fue corregido', 'inventario editado')
-      
-    
-    
+      this._inventarioService.updateInventario(this.id, inventario).subscribe(() =>{
+        console.log(inventario);
+        this.toastr.success('el inventario fue corregido', 'inventario editado');
+        this.comunicacion.triggerRefresh();
+        }
       )
     }else{
       //agregar
       this._inventarioService.guardarProducto(inventario).subscribe(() =>{
         console.log(inventario);
-        this.toastr.success('el inventario fue agregado con exito', 'inventario agregado')
+        this.toastr.success('el inventario fue agregado con exito', 'inventario agregado');
+        this.comunicacion.triggerRefresh();
       })
     }
     this.route.navigate(['/listadoInventario']);
